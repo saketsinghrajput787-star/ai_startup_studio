@@ -63,7 +63,7 @@ export default function Sidebar() {
                             <span className="block text-[10px] font-bold text-slate-450 uppercase mb-1">Status</span>
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
-                                <span className="text-xs font-semibold text-green-400">Gemini 2.5 Flash Online</span>
+                                <span className="text-xs font-semibold text-green-400">Groq LLaMA 3.3 Online</span>
                             </div>
                         </div>
                     </div>
