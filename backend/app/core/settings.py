@@ -2,8 +2,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    GOOGLE_API_KEY: str
-    MODEL_NAME: str = "gemini-2.5-flash"
+    GROQ_API_KEY: str
+    MODEL_NAME: str = "llama-3.3-70b-versatile"
     TEMPERATURE: float = 0
     CHROMA_DB_PATH: str
     KNOWLEDGE_BASE_PATH: str
@@ -16,4 +16,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-# Force uvicorn reload to pick up .env changes
+# Reboot the server space 1

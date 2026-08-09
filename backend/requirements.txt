@@ -24,4 +24,4 @@ pydantic-settings
 python-multipart
 
 pytest
-httpx
+httpxlangchain-groq

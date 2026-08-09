@@ -1,10 +1,10 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 
 from app.core.settings import settings
 
 
-llm = ChatGoogleGenerativeAI(
+llm = ChatGroq(
     model=settings.MODEL_NAME,
-    google_api_key=settings.GOOGLE_API_KEY,
+    groq_api_key=settings.GROQ_API_KEY,
     temperature=settings.TEMPERATURE,
 )
