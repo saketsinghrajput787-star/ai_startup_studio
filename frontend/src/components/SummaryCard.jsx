@@ -4,6 +4,12 @@ import { FileText, Target, AlertCircle, Sparkles, Cpu, CreditCard } from 'lucide
 export default function SummaryCard({ blueprint }) {
     if (!blueprint) return null
 
+    const safeString = (val) => {
+        if (!val) return '';
+        if (typeof val === 'string') return val;
+        try { return JSON.stringify(val, null, 2); } catch (e) { return String(val); }
+    };
+
     return (
         <div className="space-y-6">
             {/* Executive Summary & UVP */}
@@ -16,7 +22,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">Executive Summary</h3>
                     </div>
                     <p className="text-sm text-slate-350 leading-relaxed font-semibold">
-                        {blueprint.executive_summary}
+                        {safeString(blueprint.executive_summary)}
                     </p>
                 </div>
 
@@ -28,7 +34,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">Unique Value Proposition</h3>
                     </div>
                     <p className="text-sm text-fuchsia-350 leading-relaxed font-semibold">
-                        {blueprint.unique_value_proposition}
+                        {safeString(blueprint.unique_value_proposition)}
                     </p>
                 </div>
             </div>
@@ -43,7 +49,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">Target Audience</h3>
                     </div>
                     <p className="text-sm text-slate-350 leading-relaxed font-medium">
-                        {blueprint.target_audience}
+                        {safeString(blueprint.target_audience)}
                     </p>
                 </div>
 
@@ -55,7 +61,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">Problem Statement</h3>
                     </div>
                     <p className="text-sm text-slate-350 leading-relaxed font-medium">
-                        {blueprint.problem_statement}
+                        {safeString(blueprint.problem_statement)}
                     </p>
                 </div>
             </div>
@@ -70,7 +76,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">System Architecture</h3>
                     </div>
                     <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono text-slate-300 whitespace-pre-wrap flex-grow leading-relaxed">
-                        {blueprint.architecture}
+                        {safeString(blueprint.architecture)}
                     </div>
                 </div>
 
@@ -82,7 +88,7 @@ export default function SummaryCard({ blueprint }) {
                         <h3 className="font-bold text-slate-100">Business Model</h3>
                     </div>
                     <p className="text-sm text-slate-350 leading-relaxed font-medium flex-grow">
-                        {blueprint.business_model}
+                        {safeString(blueprint.business_model)}
                     </p>
                 </div>
             </div>
