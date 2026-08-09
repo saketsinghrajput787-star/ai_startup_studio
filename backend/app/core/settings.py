@@ -16,3 +16,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+# Force uvicorn reload to pick up .env changes

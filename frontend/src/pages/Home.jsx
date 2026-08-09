@@ -18,7 +18,13 @@ export default function Home() {
             navigate('/dashboard', { state: { blueprint } })
         } catch (e) {
             console.error(e)
-            setError(e.response?.data?.detail || 'An error occurred during blueprint generation. Please verify your connection or settings.')
+            const detail = e.response?.data?.detail
+            const errorMessage = typeof detail === 'string'
+                ? detail
+                : detail
+                    ? JSON.stringify(detail)
+                    : e.message || 'An error occurred during blueprint generation. Please verify your connection or settings.'
+            setError(errorMessage)
         } finally {
             setIsLoading(false)
         }
