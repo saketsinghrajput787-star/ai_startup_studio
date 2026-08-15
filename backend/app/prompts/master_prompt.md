@@ -36,7 +36,7 @@ JSON Structure
 "business_model":"",
 "risks":[],
 "future_scope":[],
-"system_architecture": {
+"system_architecture": {{
   "overview": "High-level architecture pattern and rationale (e.g. modular monolith vs microservices, event-driven)",
   "diagram_flow": [
     "User / Client (Web & Mobile)",
@@ -64,7 +64,7 @@ JSON Structure
   "reliability": "Failure handling, circuit breakers, backups, and redundancy",
   "security": "Authentication, authorization, data encryption, and vulnerability safeguards",
   "bottlenecks": "Identified primary architectural bottlenecks and recommended mitigations"
-}
+}}
 }}
 
 Startup Idea
