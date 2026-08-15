@@ -20,5 +20,6 @@ def test_get_retriever(mock_embeddings, mock_chroma):
 
     mock_chroma_instance.as_retriever.assert_called_once_with(
         search_type="similarity",
-        search_kwargs={"k": 5}
+        search_kwargs={"k": 2}
     )
+

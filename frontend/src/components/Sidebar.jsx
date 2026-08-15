@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { Sparkles, UploadCloud, LayoutDashboard, Menu, X } from 'lucide-react'
+import { Sparkles, UploadCloud, LayoutDashboard, Shield, Menu, X } from 'lucide-react'
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -8,7 +8,8 @@ export default function Sidebar() {
     const links = [
         { to: '/', label: 'Idea Generator', icon: Sparkles },
         { to: '/dashboard', label: 'Studio Dashboard', icon: LayoutDashboard },
-        { to: '/upload', label: 'Knowledge Base', icon: UploadCloud }
+        { to: '/upload', label: 'Knowledge Base', icon: UploadCloud },
+        { to: '/admin', label: 'Admin Analytics', icon: Shield }
     ]
 
     return (

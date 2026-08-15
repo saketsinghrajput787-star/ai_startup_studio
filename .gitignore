@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.pyc
 *.pyo
@@ -11,6 +11,11 @@ env/
 
 # Environment Variables
 .env
+
+# Database
+*.db
+backend/data/
+
 
 # ChromaDB
 backend/app/chroma_db/

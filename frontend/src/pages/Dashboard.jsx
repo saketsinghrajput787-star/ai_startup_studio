@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { FileText, Database, ShieldAlert, Calendar, Sparkles, ArrowLeft } from 'lucide-react'
+import { FileText, Database, ShieldAlert, Calendar, Sparkles, ArrowLeft, Server } from 'lucide-react'
 import SummaryCard from '../components/SummaryCard.jsx'
 import FeatureCard from '../components/FeatureCard.jsx'
 import DatabaseCard from '../components/DatabaseCard.jsx'
 import ApiCard from '../components/ApiCard.jsx'
 import RoadmapCard from '../components/RoadmapCard.jsx'
+import ArchitectureCard from '../components/ArchitectureCard.jsx'
 
 export default function Dashboard() {
     const location = useLocation()
@@ -39,6 +40,7 @@ export default function Dashboard() {
         { id: 'summary', name: 'Overview', icon: FileText },
         { id: 'features', name: 'Features', icon: Sparkles },
         { id: 'tech', name: 'Tech Stack', icon: Database },
+        { id: 'architecture', name: '🏗️ System Architecture', icon: Server },
         { id: 'strategy', name: 'Strategy', icon: Calendar }
     ]
 
@@ -93,6 +95,8 @@ export default function Dashboard() {
                         <ApiCard blueprint={blueprint} />
                     </div>
                 )}
+
+                {activeTab === 'architecture' && <ArchitectureCard blueprint={blueprint} />}
 
                 {activeTab === 'strategy' && (
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
