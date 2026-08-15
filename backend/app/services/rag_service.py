@@ -4,9 +4,12 @@ from app.rag.retriever import get_retriever
 class RAGService:
 
     def __init__(self):
-        self.retriever = get_retriever()
+        self.retriever = None
 
     def retrieve(self, query: str) -> str:
+
+        if self.retriever is None:
+            self.retriever = get_retriever()
 
         docs = self.retriever.invoke(query)
 
