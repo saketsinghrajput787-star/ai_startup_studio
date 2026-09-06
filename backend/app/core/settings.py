@@ -6,7 +6,7 @@ ENV_PATH = Path(__file__).resolve().parent.parent.parent / ".env"
 
 class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
-    MODEL_NAME: str = "llama-3.3-70b-versatile"
+    MODEL_NAME: str = "openai/gpt-oss-120b"
     TEMPERATURE: float = 0
     CHROMA_DB_PATH: str = "app/chroma_db"
     KNOWLEDGE_BASE_PATH: str = "../knowledge_base"
