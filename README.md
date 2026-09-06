@@ -110,3 +110,31 @@ Ensure you have Pyton (3.9+) and Node.js (18+) installed on your local machine.
 | **GET** | `/knowledge` | Fetch lists of all system seed and user files. | None |
 | **POST** | `/upload` | Upload and index `.md` files into vector store. | `Multipart-form UploadFile` |
 | **DELETE** | `/knowledge` | Clear out index cache and custom files. | None |
+
+---
+
+## ☁️ AWS EC2 Deployment
+
+FoundrAI is deployed and accessible on AWS EC2 at:
+👉 **[http://16.112.146.157](http://16.112.146.157)**
+
+### Architecture on EC2
+- **Port 80 (Nginx)**: Serves the compiled React frontend Single Page Application (`dist/`) and reverse-proxies `/api/*` to the backend.
+- **Port 8000 (FastAPI)**: Background service listening on `0.0.0.0:8000` via Uvicorn.
+- **AWS Security Group Requirements**:
+  - Inbound Port `80` (HTTP) - Open to `0.0.0.0/0`
+  - Inbound Port `22` (SSH) - For administration
+
+### One-Command Deployment on EC2
+SSH into your EC2 instance and run:
+```bash
+git pull origin main
+chmod +x deploy_ec2.sh
+./deploy_ec2.sh
+```
+
+### Alternatively, Deploy with Docker Compose:
+```bash
+docker compose up -d --build
+```
+

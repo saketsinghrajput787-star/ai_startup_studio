@@ -1,4 +1,4 @@
-from app.dependencies import DEFAULT_ADMIN_KEY
+from app.dependencies import get_admin_key
 from app.core.db import log_idea_request
 
 
@@ -33,7 +33,7 @@ def test_admin_authorized_access(client):
     # Test ideas list
     res_ideas = client.get(
         "/admin/ideas",
-        headers={"X-Admin-Key": DEFAULT_ADMIN_KEY}
+        headers={"X-Admin-Key": get_admin_key()}
     )
     assert res_ideas.status_code == 200
     data = res_ideas.json()
@@ -44,7 +44,7 @@ def test_admin_authorized_access(client):
     # Test stats
     res_stats = client.get(
         "/admin/ideas/stats",
-        headers={"X-Admin-Key": DEFAULT_ADMIN_KEY}
+        headers={"X-Admin-Key": get_admin_key()}
     )
     assert res_stats.status_code == 200
     stats = res_stats.json()
@@ -64,7 +64,7 @@ def test_admin_search_and_filter(client):
 
     res = client.get(
         f"/admin/ideas?search={unique_keyword}",
-        headers={"X-Admin-Key": DEFAULT_ADMIN_KEY}
+        headers={"X-Admin-Key": get_admin_key()}
     )
     assert res.status_code == 200
     data = res.json()

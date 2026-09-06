@@ -13,25 +13,27 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify actual frontend origins
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_origin_regex=r"https?://.*",
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
-app.include_router(generate_router)
-app.include_router(upload_router)
-app.include_router(health_router)
-app.include_router(rag_router)
-app.include_router(admin_router)
-
+# Register routers under both root and /api prefix for local and production deployment (e.g. AWS ALB, Nginx, CloudFront)
+routers = [generate_router, upload_router, health_router, rag_router, admin_router]
+for router in routers:
+    app.include_router(router)
+    app.include_router(router, prefix="/api")
 
 
 @app.get("/")
+@app.get("/api")
+@app.get("/api/")
 def root():
     return {
         "message": "Welcome to FoundrAI 🚀"
-    }
+    }

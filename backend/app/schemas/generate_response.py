@@ -1,11 +1,13 @@
-from typing import List, Optional, Any, Dict
-from pydantic import BaseModel, Field
+from typing import List, Optional
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SystemArchitecture(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     overview: Optional[str] = ""
-    diagram_flow: Optional[List[str]] = []
-    components: Optional[List[str]] = []
+    diagram_flow: Optional[List[str]] = Field(default_factory=list)
+    components: Optional[List[str]] = Field(default_factory=list)
     database_strategy: Optional[str] = ""
     caching_strategy: Optional[str] = ""
     api_architecture: Optional[str] = ""
@@ -16,6 +18,8 @@ class SystemArchitecture(BaseModel):
 
 
 class GenerateResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     executive_summary: str
     target_audience: str
     problem_statement: str
@@ -29,4 +33,5 @@ class GenerateResponse(BaseModel):
     business_model: str
     risks: List[str]
     future_scope: List[str]
-    system_architecture: Optional[SystemArchitecture] = None
+    system_architecture: Optional[SystemArchitecture] = None
+
